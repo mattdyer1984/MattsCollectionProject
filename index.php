@@ -34,30 +34,46 @@
 
 <body>
     <ul class='playersTable'>
-        <strong><li>Player ID</li></strong>
-        <strong><li>Player Name</li></strong>
-        <strong><li>Players Club</li></strong>
-        <strong><li>Players Position</li></strong>
-        <strong><li>Players Defence Score</li></strong>
-        <strong><li>Players Control Score</li></strong>
-        <strong><li>Players Attack Score</li></strong>
-        <strong><li>Players Total Score</li></strong>
-        
-<?php
-foreach($allCards as $card) {
-    echo
-    
-    "<li>Player ID : $card->id</li>
-    <li>$card->PlayerName</li>
-    <li>$card->Club</li>
-    <li>$card->PositionName</li>
-    <li>$card->Defence</li>
-    <li>$card->Control</li>
-    <li>$card->Attack</li>
-    <li>$card->Total</li>
-    ";
-}?>
-</ul>
+        <strong>
+            <li>Player ID</li>
+        </strong>
+        <strong>
+            <li>Player Name</li>
+        </strong>
+        <strong>
+            <li>Players Club</li>
+        </strong>
+        <strong>
+            <li>Players Position</li>
+        </strong>
+        <strong>
+            <li>Players Defence Score</li>
+        </strong>
+        <strong>
+            <li>Players Control Score</li>
+        </strong>
+        <strong>
+            <li>Players Attack Score</li>
+        </strong>
+        <strong>
+            <li>Players Total Score</li>
+        </strong>
+
+        <?php
+        foreach ($allCards as $card) {
+            echo
+
+            "<li>$card->id</li>
+            <li>$card->PlayerName</li>
+            <li>$card->Club</li>
+            <li>$card->PositionName</li>
+            <li>$card->Defence</li>
+            <li>$card->Control</li>
+            <li>$card->Attack</li>
+            <li>$card->Total</li>
+            ";
+            } ?>
+            </ul>
 </body>
 
 </html>

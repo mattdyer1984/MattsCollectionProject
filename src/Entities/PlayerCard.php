@@ -1,6 +1,7 @@
 <?php
 
-readonly class PlayerCard {
+readonly class PlayerCard
+{
     public int $id;
     public string $PlayerName;
     public string $Club;
@@ -9,7 +10,7 @@ readonly class PlayerCard {
     public int $Control;
     public int $Attack;
     public int $Total;
-    
+
 
     public function __construct(
         int $id,
@@ -20,18 +21,15 @@ readonly class PlayerCard {
         int $Control,
         int $Attack,
         int $Total,
-        
-    )
-    {
+
+    ) {
         $this->id = $id;
         $this->PlayerName = $PlayerName;
         $this->Club = $Club;
         $this->PositionName = $PositionName;
         $this->Defence = $Defence;
         $this->Control = $Control;
-        $this->Attack=$Attack;
-        $this->Total = $Total; 
-
+        $this->Attack = $Attack;
+        $this->Total = $Total;
     }
-
 }
