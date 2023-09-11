@@ -3,3 +3,35 @@
 *::after {
   box-sizing: border-box;
 }
+
+.navbar{
+  height: 65px;
+  display: flex;
+  background-color: rgb(51, 6, 93);
+  color: white;
+  font-size: 40px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content:center;
+  margin-bottom: 35px;
+
+}
+
+.logoImage{
+  padding-left: 30px;
+}
+
+.title{
+  padding-left: 30px;
+}
+
+.playersTable{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+  list-style-type: none;
+
+}
+
+
+
+
