@@ -22,13 +22,15 @@
     require_once 'src/Navbar.php';
     require_once 'src/Entities/PlayerCard.php';
     require_once 'src/Models/PlayerCardModel.php';
-
+    require_once 'src/displayCollectionDataList.php';
 
 
     $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $playerCards = new PlayerCardModel($db);
     $allCards = $playerCards->getAllCards();
+
+
     ?>
 </head>
 
@@ -60,19 +62,8 @@
         </strong>
 
         <?php
-        foreach ($allCards as $card) {
-            echo
-
-            "<li>$card->id</li>
-            <li>$card->PlayerName</li>
-            <li>$card->Club</li>
-            <li>$card->PositionName</li>
-            <li>$card->Defence</li>
-            <li>$card->Control</li>
-            <li>$card->Attack</li>
-            <li>$card->Total</li>
-            ";
-        } ?>
+        echo displayCollectionDataList($allCards);
+        ?>
     </ul>
 </body>
 
