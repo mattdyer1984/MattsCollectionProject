@@ -72,8 +72,8 @@
             <li>$card->Attack</li>
             <li>$card->Total</li>
             ";
-            } ?>
-            </ul>
+        } ?>
+    </ul>
 </body>
 
 </html>

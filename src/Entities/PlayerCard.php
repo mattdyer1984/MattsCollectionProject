@@ -21,7 +21,6 @@ readonly class PlayerCard
         int $Control,
         int $Attack,
         int $Total,
-
     ) {
         $this->id = $id;
         $this->PlayerName = $PlayerName;

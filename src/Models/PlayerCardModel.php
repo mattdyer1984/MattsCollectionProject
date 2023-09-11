@@ -13,7 +13,20 @@ class PlayerCardModel
 
     public function getPlayerCardById(int $id): PlayerCard|false
     {
-        $query = $this->db->prepare("SELECT `PremierLeagueCards`.`id`, `PremierLeagueCards`.`PlayerName`, `PremierLeagueCards`.`Club`, `Positions`.`PositionName`, `PremierLeagueCards`.`Defence`, `PremierLeagueCards`.`Control`, `PremierLeagueCards`.`Attack`, `PremierLeagueCards`.`Total` FROM `PremierLeagueCards` INNER JOIN `Positions` ON `PremierLeagueCards`.`Position` = `Positions`.`id` WHERE `PremierLeagueCards`.`id` = :id;");
+        $query = $this->db->prepare("SELECT 
+        `PremierLeagueCards`.`id`, 
+        `PremierLeagueCards`.`PlayerName`,
+        `PremierLeagueCards`.`Club`, 
+        `Positions`.`PositionName`, 
+        `PremierLeagueCards`.`Defence`, 
+        `PremierLeagueCards`.`Control`, 
+        `PremierLeagueCards`.`Attack`, 
+        `PremierLeagueCards`.`Total` 
+        FROM `PremierLeagueCards` 
+        INNER JOIN `Positions` 
+        ON `PremierLeagueCards`.`Position` = `Positions`.`id` 
+        WHERE `PremierLeagueCards`.`id` = :id;");
+
         $query->bindParam(':id', $id);
 
         $query->execute();
@@ -40,7 +53,19 @@ class PlayerCardModel
 
     public function getAllCards(): array
     {
-        $query = $this->db->prepare("SELECT `PremierLeagueCards`.`id`, `PremierLeagueCards`.`PlayerName`, `PremierLeagueCards`.`Club`, `Positions`.`PositionName`, `PremierLeagueCards`.`Defence`, `PremierLeagueCards`.`Control`, `PremierLeagueCards`.`Attack`, `PremierLeagueCards`.`Total` FROM `PremierLeagueCards` INNER JOIN `Positions` ON `PremierLeagueCards`.`Position` = `Positions`.`id`");
+        $query = $this->db->prepare(
+            "SELECT `PremierLeagueCards`.`id`, 
+            `PremierLeagueCards`.`PlayerName`, 
+            `PremierLeagueCards`.`Club`, 
+            `Positions`.`PositionName`, 
+            `PremierLeagueCards`.`Defence`, 
+            `PremierLeagueCards`.`Control`, 
+            `PremierLeagueCards`.`Attack`, 
+            `PremierLeagueCards`.`Total` 
+            FROM `PremierLeagueCards` 
+            INNER JOIN `Positions` 
+            ON `PremierLeagueCards`.`Position` = `Positions`.`id`"
+        );
 
         $query->execute();
 
