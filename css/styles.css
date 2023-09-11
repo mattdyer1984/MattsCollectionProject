@@ -9,10 +9,8 @@
   display: flex;
   background-color: rgb(51, 6, 93);
   color: white;
-  font-size: 40px;
-  font-weight: bolder;
   align-items: center;
-  justify-content:center;
+  justify-content:space-between;
   margin-bottom: 35px;
 }
 
@@ -22,12 +20,27 @@
 
 .title{
   padding-left: 30px;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+a{
+  color: white;
+  padding: 0 10px;
 }
 
 .playersTable{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
   list-style-type: none;
+}
+
+.addCardForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 500px;
+  margin: 100px 200px;
+  gap: 1rem
 }
 
 

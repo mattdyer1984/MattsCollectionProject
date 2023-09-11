@@ -88,4 +88,30 @@ class PlayerCardModel
 
         return $Players;
     }
+
+    public function addNewCard(
+        string $PlayerName,
+        string $Club,
+        int $Position,
+        int $Defence,
+        int $Control,
+        int $Attack,
+    ) {
+
+        $query = $this->db->prepare("INSERT INTO 
+    `PremierLeagueCards` (`PlayerName`, `Club`, `Position`, `Defence`, `Control`, `Attack`) 
+    VALUES (:PlayerName, :Club, :Position, :Defence, :Control, :Attack)");
+
+
+        $query->bindParam(':PlayerName', $PlayerName);
+        $query->bindParam(':Club', $Club);
+        $query->bindParam(':Position', $Position);
+        $query->bindParam(':Control', $Control);
+        $query->bindParam(':Attack', $Attack);
+        $query->bindParam(':Defence', $Defence);
+
+
+
+        $query->execute();
+    }
 }
