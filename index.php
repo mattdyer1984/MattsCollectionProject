@@ -65,7 +65,7 @@
         echo displayCollectionDataList($allCards);
         if (isset($_GET['error'])) {
             echo $_GET['error'];
-        }else if(isset($_GET['message'])) {
+        } else if (isset($_GET['message'])) {
             echo $_GET['message'];
         };
         ?>

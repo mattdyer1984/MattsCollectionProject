@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
     $Defence = $_POST['Defence'];
     $Control = $_POST['Control'];
     $Attack = $_POST['Attack'];
-    
     $Player = new PlayerCardModel($db);
     $newPlayer = $Player->addNewCard(
         $PlayerName,
