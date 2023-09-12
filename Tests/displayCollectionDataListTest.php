@@ -11,8 +11,8 @@ class DisplayCollectionDataListTest extends TestCase
     public function test_DisplayCollectionDataList()
     {
         $allCards = [
-            new PlayerCard(1, 'Player 1', 'Club1', 'Defender', 90, 95, 90, 275),
-            new PlayerCard(2, 'Player 2', 'Club2', 'Midfield', 85, 88, 43, 216),
+            new PlayerCard(1, 'Player 1', 'Club1', 'Defender', 90, 95, 90, 275,0),
+            new PlayerCard(2, 'Player 2', 'Club2', 'Midfield', 85, 88, 43, 216,0),
         ];
 
 
