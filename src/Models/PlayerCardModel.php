@@ -94,7 +94,8 @@ class PlayerCardModel
     }
 
 
-    public function addNewCard(PlayerCard $newPlayer):bool {
+    public function addNewCard(PlayerCard $newPlayer): bool
+    {
 
         $query = $this->db->prepare("INSERT INTO 
     `PremierLeagueCards` (`PlayerName`, `Club`, `Position`, `Defence`, `Control`, `Attack`) 
@@ -106,17 +107,18 @@ class PlayerCardModel
             ':Position' => $newPlayer->PositionName,
             ':Control' => $newPlayer->Control,
             ':Attack' => $newPlayer->Attack,
-            ':Defence'=> $newPlayer->Defence
+            ':Defence' => $newPlayer->Defence
         ]);
     }
 
-    public function changeActivationStatus(int $id, int $Deleted) {
+    public function changeActivationStatus(int $id, int $Deleted)
+    {
         $query = $this->db->prepare("UPDATE `PremierLeagueCards`
         SET `Deleted` = $Deleted
         WHERE `id` = $id
         LIMIT 1;");
-    $query->execute();
-    
-    $query->fetch();
+        $query->execute();
+
+        $query->fetch();
     }
 }

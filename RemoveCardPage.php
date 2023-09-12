@@ -20,21 +20,22 @@
     <script defer src="js/index.js"></script>
     <?php
 
-require_once 'src/Navbar.php';
-require_once 'src/DeleteCard.php';
-require_once 'src/Entities/PlayerCard.php';
-require_once 'src/Models/PlayerCardModel.php';
+    require_once 'src/Navbar.php';
+    require_once 'src/DeleteCard.php';
+    require_once 'src/Entities/PlayerCard.php';
+    require_once 'src/Models/PlayerCardModel.php';
 
 
-$db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-$playerCards = new PlayerCardModel($db);
-$allCards = $playerCards->getAllCards();
+    $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $playerCards = new PlayerCardModel($db);
+    $allCards = $playerCards->getAllCards();
 
-?>
+    ?>
 </head>
+
 <body>
-<ul style='display: grid;
+    <ul style='display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   list-style-type: none;'>
         <strong>
@@ -55,8 +56,8 @@ $allCards = $playerCards->getAllCards();
 
 
 
-<?php
-echo DisplayDataforCardDelete($allCards);
-?>
-</ul>
+        <?php
+        echo DisplayDataforCardDelete($allCards);
+        ?>
+    </ul>
 </body>
