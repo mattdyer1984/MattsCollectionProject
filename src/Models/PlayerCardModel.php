@@ -21,7 +21,8 @@ class PlayerCardModel
         `PremierLeagueCards`.`Defence`, 
         `PremierLeagueCards`.`Control`, 
         `PremierLeagueCards`.`Attack`, 
-        `PremierLeagueCards`.`Total` 
+        `PremierLeagueCards`.`Total`,
+        `PremierLeagueCards`.`Deleted` 
         FROM `PremierLeagueCards` 
         INNER JOIN `Positions` 
         ON `PremierLeagueCards`.`Position` = `Positions`.`id` 
@@ -45,13 +46,14 @@ class PlayerCardModel
             $dbPlayer['Defence'],
             $dbPlayer['Control'],
             $dbPlayer['Attack'],
-            $dbPlayer['Total']
+            $dbPlayer['Total'],
+            $dbPlayer['Deleted']
         );
 
         return $Player;
     }
 
-    public function getAllCards(): array
+    public function getAllCards($DeleteStatus): array
     {
         $query = $this->db->prepare(
             "SELECT `PremierLeagueCards`.`id`, 
@@ -61,10 +63,12 @@ class PlayerCardModel
             `PremierLeagueCards`.`Defence`, 
             `PremierLeagueCards`.`Control`, 
             `PremierLeagueCards`.`Attack`, 
-            `PremierLeagueCards`.`Total` 
+            `PremierLeagueCards`.`Total`,
+            `PremierLeagueCards`.`Deleted` 
             FROM `PremierLeagueCards` 
             INNER JOIN `Positions` 
-            ON `PremierLeagueCards`.`Position` = `Positions`.`id`"
+            ON `PremierLeagueCards`.`Position` = `Positions`.`id`
+            WHERE `PremierLeagueCards`.`Deleted` = $DeleteStatus;"
         );
 
         $query->execute();
@@ -82,14 +86,17 @@ class PlayerCardModel
                 $dbPlayer['Defence'],
                 $dbPlayer['Control'],
                 $dbPlayer['Attack'],
-                $dbPlayer['Total']
+                $dbPlayer['Total'],
+                $dbPlayer['Deleted']
             );
         }
 
         return $Players;
     }
 
-    public function addNewCard(PlayerCard $newPlayer):bool {
+
+    public function addNewCard(PlayerCard $newPlayer): bool
+    {
 
         $query = $this->db->prepare("INSERT INTO 
     `PremierLeagueCards` (`PlayerName`, `Club`, `Position`, `Defence`, `Control`, `Attack`) 
@@ -101,7 +108,21 @@ class PlayerCardModel
             ':Position' => $newPlayer->PositionName,
             ':Control' => $newPlayer->Control,
             ':Attack' => $newPlayer->Attack,
-            ':Defence'=> $newPlayer->Defence
+            ':Defence' => $newPlayer->Defence
         ]);
+    }
+
+    public function changeActivationStatus(int $id, int $Deleted)
+    {
+        $query = $this->db->prepare("UPDATE `PremierLeagueCards`
+        SET `Deleted` = :Deleted
+        WHERE `id` = :id
+        LIMIT 1;");
+        $query->execute([
+            ':Deleted' => $Deleted,
+            ':id' => $id
+        ]);
+
+        $query->fetch();
     }
 }

@@ -19,11 +19,13 @@
 
     <script defer src="js/index.js"></script>
     <?php
+
     require_once 'src/Navbar.php';
+    require_once 'src/DeleteCard.php';
     require_once 'src/Entities/PlayerCard.php';
     require_once 'src/Models/PlayerCardModel.php';
-    require_once 'src/displayCollectionDataList.php';
     require_once 'src/DatabaseConnection.php';
+    require_once 'src/DisplayShortCardData.php';
 
 
     $db = DatabaseConnection();
@@ -35,7 +37,9 @@
 </head>
 
 <body>
-    <ul class='playersTable'>
+    <ul style='display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  list-style-type: none;'>
         <strong>
             <li>Player ID</li>
         </strong>
@@ -49,27 +53,13 @@
             <li>Players Position</li>
         </strong>
         <strong>
-            <li>Players Defence Score</li>
-        </strong>
-        <strong>
-            <li>Players Control Score</li>
-        </strong>
-        <strong>
-            <li>Players Attack Score</li>
-        </strong>
-        <strong>
-            <li>Players Total Score</li>
+            <li>Delete Card</li>
         </strong>
 
+
+
         <?php
-        echo displayCollectionDataList($allCards);
-        if (isset($_GET['error'])) {
-            echo $_GET['error'];
-        } elseif (isset($_GET['message'])) {
-            echo $_GET['message'];
-        };
+        echo DisplayShortCardData($allCards);
         ?>
     </ul>
 </body>
-
-</html>

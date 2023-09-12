@@ -1,6 +1,7 @@
 <?php
 
-require_once 'src/Models/PlayerCardModel.php';
+require_once 'Models/PlayerCardModel.php';
+require_once 'Entities/PlayerCard.php';
 require_once 'src/DatabaseConnection.php';
 
 $db = DatabaseConnection();
@@ -26,5 +27,5 @@ if (isset($_POST['submit'])) {
 
     $Player = new PlayerCardModel($db);
     $Player->addNewCard($newPlayer);
-    header('Location: index.php?message=New+Card+Added');
+    header('Location: /work/MattsCollectionProject/index.php?message=New+Card+Added');
 }
