@@ -1,6 +1,7 @@
 <?php
 
-require_once 'src/Models/PlayerCardModel.php';
+require_once 'Models/PlayerCardModel.php';
+require_once 'Entities/PlayerCard.php';
 
 $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -26,5 +27,5 @@ if (isset($_POST['submit'])) {
 
     $Player = new PlayerCardModel($db);
     $Player->addNewCard($newPlayer);
-    header('Location: index.php?message=New+Card+Added');
+    header('Location: /work/MattsCollectionProject/index.php?message=New+Card+Added');
 }

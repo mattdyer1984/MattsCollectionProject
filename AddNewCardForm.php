@@ -24,9 +24,9 @@
     ?>
     <form class="addCardForm" action="AddNewCard.php" method="POST" onsubmit="return validateForm()">
         <label for="PlayerName">PlayerName</label>
-        <input type="text" name="PlayerName" id="PlayerName" minlength="3" maxlength="100"required />
+        <input type="text" name="PlayerName" id="PlayerName" minlength="3" maxlength="100" required />
         <label for="Club">Club</label>
-        <input type="text" name="Club" id="Club" minlength="6" maxlength="100"required />
+        <input type="text" name="Club" id="Club" minlength="6" maxlength="100" required />
         <label for="Position">Position</label>
         <select name="Position" id="Position">
             <option value="1">Goalkeeper</option>
