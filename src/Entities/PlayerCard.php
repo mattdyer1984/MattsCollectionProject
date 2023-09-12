@@ -10,6 +10,7 @@ readonly class PlayerCard
     public int $Control;
     public int $Attack;
     public ?int $Total;
+    public ?int $Deleted;
 
 
     public function __construct(
@@ -21,6 +22,7 @@ readonly class PlayerCard
         int $Control,
         int $Attack,
         int $Total,
+        int $Deleted
     ) {
         $this->id = $id;
         $this->PlayerName = $PlayerName;
@@ -30,5 +32,6 @@ readonly class PlayerCard
         $this->Control = $Control;
         $this->Attack = $Attack;
         $this->Total = $Total;
+        $this->Deleted = $Deleted;
     }
 }

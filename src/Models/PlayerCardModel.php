@@ -21,7 +21,8 @@ class PlayerCardModel
         `PremierLeagueCards`.`Defence`, 
         `PremierLeagueCards`.`Control`, 
         `PremierLeagueCards`.`Attack`, 
-        `PremierLeagueCards`.`Total` 
+        `PremierLeagueCards`.`Total`,
+        `PremierLeagueCards`.`Deleted` 
         FROM `PremierLeagueCards` 
         INNER JOIN `Positions` 
         ON `PremierLeagueCards`.`Position` = `Positions`.`id` 
@@ -45,7 +46,8 @@ class PlayerCardModel
             $dbPlayer['Defence'],
             $dbPlayer['Control'],
             $dbPlayer['Attack'],
-            $dbPlayer['Total']
+            $dbPlayer['Total'],
+            $dbPlayer['Deleted']
         );
 
         return $Player;
@@ -61,7 +63,8 @@ class PlayerCardModel
             `PremierLeagueCards`.`Defence`, 
             `PremierLeagueCards`.`Control`, 
             `PremierLeagueCards`.`Attack`, 
-            `PremierLeagueCards`.`Total` 
+            `PremierLeagueCards`.`Total`,
+            `PremierLeagueCards`.`Deleted` 
             FROM `PremierLeagueCards` 
             INNER JOIN `Positions` 
             ON `PremierLeagueCards`.`Position` = `Positions`.`id`"
@@ -82,12 +85,14 @@ class PlayerCardModel
                 $dbPlayer['Defence'],
                 $dbPlayer['Control'],
                 $dbPlayer['Attack'],
-                $dbPlayer['Total']
+                $dbPlayer['Total'],
+                $dbPlayer['Deleted']
             );
         }
 
         return $Players;
     }
+
 
     public function addNewCard(PlayerCard $newPlayer):bool {
 
@@ -103,5 +108,15 @@ class PlayerCardModel
             ':Attack' => $newPlayer->Attack,
             ':Defence'=> $newPlayer->Defence
         ]);
+    }
+
+    public function changeActivationStatus(int $id, int $Deleted) {
+        $query = $this->db->prepare("UPDATE `PremierLeagueCards`
+        SET `Deleted` = $Deleted
+        WHERE `id` = $id
+        LIMIT 1;");
+    $query->execute();
+    
+    $query->fetch();
     }
 }
