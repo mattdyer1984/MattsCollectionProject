@@ -24,9 +24,9 @@
     ?>
     <form class="addCardForm" action="AddNewCard.php" method="POST" onsubmit="return validateForm()">
         <label for="PlayerName">PlayerName</label>
-        <input type="text" name="PlayerName" id="PlayerName" required />
+        <input type="text" name="PlayerName" id="PlayerName" minlength="3" maxlength="100"required />
         <label for="Club">Club</label>
-        <input type="text" name="Club" id="Club" required />
+        <input type="text" name="Club" id="Club" minlength="6" maxlength="100"required />
         <label for="Position">Position</label>
         <select name="Position" id="Position">
             <option value="1">Goalkeeper</option>
@@ -35,10 +35,10 @@
             <option value="4">Forward</option>
         </select>
         <label for="Defence">Defence Score (0 - 100)</label>
-        <input type="number" name="Defence" id="Defence" required />
+        <input type="number" name="Defence" id="Defence" min="1" max="100" required />
         <label for="Control">Control Score (0 - 100)</label>
-        <input type="number" name="Control" id="Control" required />
+        <input type="number" name="Control" id="Control" min="1" max="100" required />
         <label for="Attack">Attack Score (0 - 100)</label>
-        <input type="number" name="Attack" id="Attack" required /><br>
+        <input type="number" name="Attack" id="Attack" min="1" max="100" required /><br>
         <input style="margin-top:20px" type="submit" name='submit' value="Register" />
     </form>

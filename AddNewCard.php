@@ -12,16 +12,18 @@ if (isset($_POST['submit'])) {
     $Defence = $_POST['Defence'];
     $Control = $_POST['Control'];
     $Attack = $_POST['Attack'];
-    $Player = new PlayerCardModel($db);
-    $newPlayer = $Player->addNewCard(
+    $newPlayer = new PlayerCard(
+        0, 
         $PlayerName,
         $Club,
         $Position,
         $Defence,
         $Control,
-        $Attack
+        $Attack,
+        0 
     );
+
+    $Player = new PlayerCardModel($db);
+    $Player->addNewCard($newPlayer);
     header('Location: index.php?message=New+Card+Added');
-} else {
-    header('Location: AddNewCardForm.php?error=Unable+To+Add+Card');
 }
