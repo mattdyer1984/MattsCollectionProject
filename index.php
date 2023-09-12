@@ -28,7 +28,7 @@
 
     $db = DatabaseConnection();
     $playerCards = new PlayerCardModel($db);
-    $allCards = $playerCards->getAllCards();
+    $allCards = $playerCards->getAllCards(0);
 
 
     ?>

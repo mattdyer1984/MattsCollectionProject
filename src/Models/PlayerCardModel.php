@@ -53,7 +53,7 @@ class PlayerCardModel
         return $Player;
     }
 
-    public function getAllCards(): array
+    public function getAllCards($DeleteStatus): array
     {
         $query = $this->db->prepare(
             "SELECT `PremierLeagueCards`.`id`, 
@@ -67,7 +67,8 @@ class PlayerCardModel
             `PremierLeagueCards`.`Deleted` 
             FROM `PremierLeagueCards` 
             INNER JOIN `Positions` 
-            ON `PremierLeagueCards`.`Position` = `Positions`.`id`"
+            ON `PremierLeagueCards`.`Position` = `Positions`.`id`
+            WHERE `PremierLeagueCards`.`Deleted` = $DeleteStatus;"
         );
 
         $query->execute();
@@ -114,10 +115,13 @@ class PlayerCardModel
     public function changeActivationStatus(int $id, int $Deleted)
     {
         $query = $this->db->prepare("UPDATE `PremierLeagueCards`
-        SET `Deleted` = $Deleted
-        WHERE `id` = $id
+        SET `Deleted` = :Deleted
+        WHERE `id` = :id
         LIMIT 1;");
-        $query->execute();
+        $query->execute([
+            ':Deleted' => $Deleted,
+            ':id' => $id
+        ]);
 
         $query->fetch();
     }

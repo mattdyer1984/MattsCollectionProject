@@ -1,12 +1,13 @@
 <?php
 
 
-function DisplayShortCardData(array $allCards):array | string
+function DisplayShortCardData(array $allCards)
 {
     $output = '';
-
+    if (empty($allCards)) {
+        return 'No cards to display';
+    }
     foreach ($allCards as $card) {
-        if ($card->Deleted == 0) {
             $output .=
                 "<li>{$card->id}</li>
             <li>{$card->PlayerName}</li>
@@ -17,8 +18,5 @@ function DisplayShortCardData(array $allCards):array | string
             <input type='submit' name='delete' value='Delete' onclick='return confirmDelete()'>
             </form>
             ";
-        } 
-    }
-
-    return $output;
-}
+        } return $output;
+    } 
