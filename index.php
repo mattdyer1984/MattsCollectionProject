@@ -63,6 +63,11 @@
 
         <?php
         echo displayCollectionDataList($allCards);
+        if (isset($_GET['error'])) {
+            echo $_GET['error'];
+        } elseif (isset($_GET['message'])) {
+            echo $_GET['message'];
+        };
         ?>
     </ul>
 </body>

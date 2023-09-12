@@ -16,6 +16,5 @@ function displayCollectionDataList(array $allCards)
             <li>{$card->Total}</li>
             ";
     }
-
-    return $output;  
+    return $output;
 }

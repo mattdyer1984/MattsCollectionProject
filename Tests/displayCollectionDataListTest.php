@@ -6,7 +6,7 @@ require_once 'src/Entities/PlayerCard.php';
 
 use PHPUnit\Framework\TestCase;
 
-class displayCollectionDataListTest extends TestCase
+class DisplayCollectionDataListTest extends TestCase
 {
     public function test_DisplayCollectionDataList()
     {

@@ -88,4 +88,20 @@ class PlayerCardModel
 
         return $Players;
     }
+
+    public function addNewCard(PlayerCard $newPlayer):bool {
+
+        $query = $this->db->prepare("INSERT INTO 
+    `PremierLeagueCards` (`PlayerName`, `Club`, `Position`, `Defence`, `Control`, `Attack`) 
+    VALUES (:PlayerName, :Club, :Position, :Defence, :Control, :Attack)");
+
+        return $query->execute([
+            ':PlayerName' => $newPlayer->PlayerName,
+            ':Club' => $newPlayer->Club,
+            ':Position' => $newPlayer->PositionName,
+            ':Control' => $newPlayer->Control,
+            ':Attack' => $newPlayer->Attack,
+            ':Defence'=> $newPlayer->Defence
+        ]);
+    }
 }

@@ -2,14 +2,14 @@
 
 readonly class PlayerCard
 {
-    public int $id;
+    public ?int $id;
     public string $PlayerName;
     public string $Club;
     public string $PositionName;
     public int $Defence;
     public int $Control;
     public int $Attack;
-    public int $Total;
+    public ?int $Total;
 
 
     public function __construct(
