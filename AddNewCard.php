@@ -1,9 +1,9 @@
 <?php
 
 require_once 'src/Models/PlayerCardModel.php';
+require_once 'src/DatabaseConnection.php';
 
-$db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$db = DatabaseConnection();
 
 if (isset($_POST['submit'])) {
     $PlayerName = $_POST['PlayerName'];

@@ -24,12 +24,14 @@
     require_once 'src/DeleteCard.php';
     require_once 'src/Entities/PlayerCard.php';
     require_once 'src/Models/PlayerCardModel.php';
+    require_once 'src/DatabaseConnection.php';
+    require_once 'src/DisplayShortCardData.php';
 
 
-    $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $db = DatabaseConnection();
     $playerCards = new PlayerCardModel($db);
     $allCards = $playerCards->getAllCards();
+
 
     ?>
 </head>
@@ -57,7 +59,7 @@
 
 
         <?php
-        echo DisplayDataforCardDelete($allCards);
+        echo DisplayShortCardData($allCards);
         ?>
     </ul>
 </body>

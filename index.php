@@ -23,10 +23,10 @@
     require_once 'src/Entities/PlayerCard.php';
     require_once 'src/Models/PlayerCardModel.php';
     require_once 'src/displayCollectionDataList.php';
+    require_once 'src/DatabaseConnection.php';
 
 
-    $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $db = DatabaseConnection();
     $playerCards = new PlayerCardModel($db);
     $allCards = $playerCards->getAllCards();
 
