@@ -40,6 +40,5 @@ class DisplayCollectionDataListTest extends TestCase
         $actualOutput = str_replace(["\n", "\r", ' '], '', $actualOutput);
 
         $this->assertEquals($expectedOutput, $actualOutput);
-        $this->assertEquals($expectedOutput, $actualOutput);
     }
 }
