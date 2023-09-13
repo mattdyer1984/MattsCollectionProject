@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    <p style='text-align:center; font-size:22px; font-weight:600;'> Click on the players name to edit their details</p>
     <ul class='playersTable'>
         <strong>
             <li>Player ID</li>

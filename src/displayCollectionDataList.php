@@ -5,10 +5,9 @@ function displayCollectionDataList(array $allCards)
     $output = '';
 
     foreach ($allCards as $card) {
-      if ($card->Deleted == 0) {
         $output .=
             "<li>{$card->id}</li>
-            <li>{$card->PlayerName}</li>
+            <li><a href='EditCard.php?id={$card->id}'>{$card->PlayerName}</a></li>
             <li>{$card->Club}</li>
             <li>{$card->PositionName}</li>
             <li>{$card->Defence}</li>
@@ -17,6 +16,6 @@ function displayCollectionDataList(array $allCards)
             <li>{$card->Total}</li>
             ";
     } 
-  }
+  
     return $output;
 }
