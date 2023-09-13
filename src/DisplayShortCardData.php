@@ -1,6 +1,5 @@
 <?php
 
-
 function DisplayShortCardData(array $allCards)
 {
     $output = '';
@@ -8,8 +7,8 @@ function DisplayShortCardData(array $allCards)
         return 'No cards to display';
     }
     foreach ($allCards as $card) {
-            $output .=
-                "<li>{$card->id}</li>
+        $output .=
+            "<li>{$card->id}</li>
             <li>{$card->PlayerName}</li>
             <li>{$card->Club}</li>
             <li>{$card->PositionName}</li>
@@ -18,5 +17,6 @@ function DisplayShortCardData(array $allCards)
             <input type='submit' name='delete' value='Delete' onclick='return confirmDelete()'>
             </form>
             ";
-        } return $output;
-    } 
+    }
+    return $output;
+}
