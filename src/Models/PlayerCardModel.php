@@ -112,7 +112,7 @@ class PlayerCardModel
         ]);
     }
 
-    public function changeActivationStatus(int $id, int $Deleted):bool
+    public function changeActivationStatus(int $id, int $Deleted): bool
     {
         $query = $this->db->prepare("UPDATE `PremierLeagueCards`
         SET `Deleted` = :Deleted
@@ -125,8 +125,8 @@ class PlayerCardModel
     }
 
     public function updatePlayer(PlayerCard $newPlayer, int $id): bool
-{
-    $query = $this->db->prepare("UPDATE `PremierLeagueCards`
+    {
+        $query = $this->db->prepare("UPDATE `PremierLeagueCards`
         SET `PlayerName` = :PlayerName, 
         `Club` = :Club, 
         `Position` = :PositionName, 
@@ -134,16 +134,15 @@ class PlayerCardModel
         `Control` = :Control, 
         `Attack` = :Attack
         WHERE `id` = :id");
-    
-    return $query->execute([
-        ':PlayerName' => $newPlayer->PlayerName,
-        ':Club' => $newPlayer->Club,
-        ':PositionName' => $newPlayer->PositionName,
-        ':Control' => $newPlayer->Control,
-        ':Attack' => $newPlayer->Attack,
-        ':Defence' => $newPlayer->Defence,
-        ':id' => $id
-    ]);
-    
-}
+
+        return $query->execute([
+            ':PlayerName' => $newPlayer->PlayerName,
+            ':Club' => $newPlayer->Club,
+            ':PositionName' => $newPlayer->PositionName,
+            ':Control' => $newPlayer->Control,
+            ':Attack' => $newPlayer->Attack,
+            ':Defence' => $newPlayer->Defence,
+            ':id' => $id
+        ]);
+    }
 }

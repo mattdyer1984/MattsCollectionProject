@@ -2,11 +2,11 @@
 
 function displayCollectionDataList(array $allCards)
 {
-    $output = '';
+  $output = '';
 
-    foreach ($allCards as $card) {
-        $output .=
-            "<li>{$card->id}</li>
+  foreach ($allCards as $card) {
+    $output .=
+      "<li>{$card->id}</li>
             <li><a href='EditCard.php?id={$card->id}'>{$card->PlayerName}</a></li>
             <li>{$card->Club}</li>
             <li>{$card->PositionName}</li>
@@ -15,7 +15,7 @@ function displayCollectionDataList(array $allCards)
             <li>{$card->Attack}</li>
             <li>{$card->Total}</li>
             ";
-    } 
-  
-    return $output;
+  }
+
+  return $output;
 }

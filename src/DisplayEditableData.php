@@ -1,7 +1,8 @@
 <?php
+
 function display(object $card)
 {
-    return 
+    return
         "<form class='editForm' action='EditDataFunction.php?id={$card->id}' method='POST'>
         <p>Player Details</p>
         <p>New Player Details</p>
