@@ -4,6 +4,7 @@
     <div class="navlinks">
         <a href="Index.php"> Home</a>
         <a href="AddNewCardForm.php"> Add New Card</a>
-        <a href="RemoveCardPage.php"> Remove a Card</a>
+        <a href="RemoveCardPage.php?id=Delete"> Remove a Card</a>
+        <a href="RestoreCardPage.php?id=Restore"> Restore a Card</a>
     </div>
 </nav>

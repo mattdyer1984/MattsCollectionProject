@@ -13,9 +13,9 @@ require_once 'src/DatabaseConnection.php'
 function DeleteCard(int $id, $db)
 {
     $playerCards = new PlayerCardModel($db);
-    $playerCards->changeActivationStatus($id, 1);
-}
-if (isset($_POST['delete'])) {
+    $playerCards->changeActivationStatus($id, 1); 
+} 
+if (isset($_POST['Delete'])) {
     $cardId = $_POST['card_id'];
     $db = DatabaseConnection();
     DeleteCard($cardId, $db);

@@ -113,7 +113,7 @@ class PlayerCardModel
         ]);
     }
 
-    public function changeActivationStatus(int $id, int $Deleted): bool
+    public function changeActivationStatus(int $id, int $Deleted=0): bool
     {
         $query = $this->db->prepare("UPDATE `PremierLeagueCards`
         SET `Deleted` = :Deleted
