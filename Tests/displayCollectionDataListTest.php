@@ -18,7 +18,7 @@ class DisplayCollectionDataListTest extends TestCase
 
         $expectedOutput =
             "<li>1</li>
-        <li>Player 1</li>
+        <li><ahref='EditCard.php?id=1'>Player1</a></li>
         <li>Club1</li>
         <li>Defender</li>
         <li>90</li>
@@ -26,7 +26,7 @@ class DisplayCollectionDataListTest extends TestCase
         <li>90</li>
         <li>275</li>
         <li>2</li>
-        <li>Player 2</li>
+        <li><ahref='EditCard.php?id=2'>Player2</a></li>
         <li>Club2</li>
         <li>Midfield</li>
         <li>85</li>

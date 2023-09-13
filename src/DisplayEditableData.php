@@ -1,6 +1,6 @@
 <?php
 
-function display(object $card)
+function display(PlayerCard $card)
 {
     return
         "<form class='editForm' action='EditDataFunction.php?id={$card->id}' method='POST'>

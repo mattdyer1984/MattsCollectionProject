@@ -4,6 +4,10 @@ function displayCollectionDataList(array $allCards)
 {
   $output = '';
 
+  if($allCards == []){
+    echo "<div></div>
+          <p>No Matching Cards</p>";
+  }
   foreach ($allCards as $card) {
     $output .=
       "<li>{$card->id}</li>

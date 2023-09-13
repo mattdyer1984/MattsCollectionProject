@@ -53,23 +53,24 @@ class PlayerCardModel
         return $Player;
     }
 
-    public function getAllCards($DeleteStatus): array
-    {
-        $query = $this->db->prepare(
-            "SELECT `PremierLeagueCards`.`id`, 
-            `PremierLeagueCards`.`PlayerName`, 
-            `PremierLeagueCards`.`Club`, 
-            `Positions`.`PositionName`, 
-            `PremierLeagueCards`.`Defence`, 
-            `PremierLeagueCards`.`Control`, 
-            `PremierLeagueCards`.`Attack`, 
-            `PremierLeagueCards`.`Total`,
-            `PremierLeagueCards`.`Deleted` 
-            FROM `PremierLeagueCards` 
-            INNER JOIN `Positions` 
-            ON `PremierLeagueCards`.`Position` = `Positions`.`id`
-            WHERE `PremierLeagueCards`.`Deleted` = $DeleteStatus;"
-        );
+    public function getAllCards($DeleteStatus, $PositionId = ""): array
+{
+    $query = $this->db->prepare(
+        "SELECT `PremierLeagueCards`.`id`, 
+        `PremierLeagueCards`.`PlayerName`, 
+        `PremierLeagueCards`.`Club`, 
+        `Positions`.`PositionName`, 
+        `PremierLeagueCards`.`Defence`, 
+        `PremierLeagueCards`.`Control`, 
+        `PremierLeagueCards`.`Attack`, 
+        `PremierLeagueCards`.`Total`,
+        `PremierLeagueCards`.`Deleted` 
+        FROM `PremierLeagueCards` 
+        INNER JOIN `Positions` 
+        ON `PremierLeagueCards`.`Position` = `Positions`.`id`
+        WHERE `PremierLeagueCards`.`Deleted` = $DeleteStatus" .
+        ($PositionId ? " AND `Positions`.`id` = $PositionId" : "")
+    );
 
         $query->execute();
 
