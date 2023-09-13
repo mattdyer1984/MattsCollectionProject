@@ -5,7 +5,7 @@
 }
 
 .navbar{
-  height: 65px;
+  height: 80px;
   display: flex;
   background-color: rgb(51, 6, 93);
   color: white;
@@ -24,15 +24,20 @@
   font-weight: bolder;
 }
 
-a{
+.navlinks a{
   color: white;
   padding: 0 10px;
 }
 
 .playersTable{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 3fr 3fr 2fr 2fr 2fr 2fr 2fr ;
   list-style-type: none;
+  text-align: center;
+}
+
+.playersTable a{
+  color:cornflowerblue;
 }
 
 .addCardForm {
@@ -41,6 +46,16 @@ a{
   width: 500px;
   margin: 100px 200px;
   gap: 1rem
+}
+
+.editForm {
+  display:grid; 
+  text-align: center; 
+  font-size:20px; 
+  font-weight:bolder; 
+  grid-template-columns: 1fr 2fr; 
+  width: 700px; 
+  margin-left:40px;
 }
 
 

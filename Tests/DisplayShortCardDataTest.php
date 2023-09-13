@@ -11,8 +11,8 @@ class DisplayShortCardDataTest extends TestCase
     public function test_DisplayShortCardData()
     {
         $allCards = [
-            new PlayerCard(1, 'Player 1', 'Club1', 'Defender', 90, 95, 90, 275,0),
-            new PlayerCard(2, 'Player 2', 'Club2', 'Midfield', 85, 88, 43, 216,0),
+            new PlayerCard(1, 'Player 1', 'Club1', 'Defender', 90, 95, 90, 275, 0),
+            new PlayerCard(2, 'Player 2', 'Club2', 'Midfield', 85, 88, 43, 216, 0),
         ];
         $expectedOutput = "
         <li>1</li>
@@ -37,16 +37,14 @@ class DisplayShortCardDataTest extends TestCase
         $expectedOutput = str_replace(["\n", "\r", ' '], '', $expectedOutput);
         $actualOutput = str_replace(["\n", "\r", ' '], '', $actualOutput);
         $this->assertEquals($expectedOutput, $actualOutput);
-       
+    }
+
+    public function testDisplayShortCardDataWithNoCards()
+    {
+        $allCards = [];
+
+        $expectedOutput = 'No cards to display';
+
+        $this->assertSame($expectedOutput, DisplayShortCardData($allCards));
+    }
 }
-
-public function testDisplayShortCardDataWithNoCards()
-{
-    $allCards = [];
-
-    $expectedOutput = 'No cards to display';
-
-    $this->assertSame($expectedOutput, DisplayShortCardData($allCards));
-}
-}
-
