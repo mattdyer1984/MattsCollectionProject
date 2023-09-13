@@ -1,8 +1,8 @@
-<?php  
-    $id = '';
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-    } 
+<?php
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
 ?>
 <form method='GET' action='index.php' id='positionFilter'>
     <select name='id' id='Position'>

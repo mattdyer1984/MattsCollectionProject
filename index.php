@@ -31,7 +31,7 @@
     $id = '';
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-    } 
+    }
     $allCards = $playerCards->getAllCards(0, $id);
 
 
