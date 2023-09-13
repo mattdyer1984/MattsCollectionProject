@@ -53,7 +53,7 @@ class PlayerCardModel
         return $Player;
     }
 
-    public function getAllCards($DeleteStatus, $PositionId = ""): array
+    public function getAllCards(int $DeleteStatus, string $PositionId = ''): array
     {
         $query = $this->db->prepare(
             "SELECT `PremierLeagueCards`.`id`, 

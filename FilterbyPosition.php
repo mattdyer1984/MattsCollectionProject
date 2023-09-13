@@ -4,7 +4,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 ?>
-<form method='GET' action='index.php' id='positionFilter'>
+<form style='margin-left:25px;' method='GET' action='index.php' id='positionFilter'>
     <select name='id' id='Position'>
         <option value='' <?php echo ($id == '' ? 'selected' : ''); ?>>All Positions</option>
         <option value='1' <?php echo ($id == '1' ? 'selected' : ''); ?>>Goalkeeper</option>

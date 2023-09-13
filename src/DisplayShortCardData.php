@@ -12,7 +12,7 @@ function DisplayShortCardData(array $allCards,string $url)
             <li>{$card->PlayerName}</li>
             <li>{$card->Club}</li>
             <li>{$card->PositionName}</li>
-            <form class='DeleteCardForm' action=$url' method='POST'>
+            <form class='DeleteCardForm' action=$url method='POST'>
             <input type='hidden' name='card_id' value='{$card->id}'>
             <input type='submit' name='$_GET[id]' value='$_GET[id]' onclick='return confirm$_GET[id]()'>
             </form>

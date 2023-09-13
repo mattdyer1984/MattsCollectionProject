@@ -19,21 +19,21 @@ class DisplayShortCardDataTest extends TestCase
         <li>Player 1</li>
         <li>Club1</li>
         <li>Defender</li>
-        <form class='DeleteCardForm' action='RemoveCardPage.php' method='POST'>
+        <form class='DeleteCardForm' action=RemoveCardPage.php' method='POST'>
             <input type='hidden' name='card_id' value='1'>
-            <input type='submit' name='delete' value='Delete' onclick='return confirmDelete()'>
+            <input type='submit' name='' value='' onclick='return confirm()'>
         </form>
         <li>2</li>
         <li>Player 2</li>
         <li>Club2</li>
         <li>Midfield</li>
-        <form class='DeleteCardForm' action='RemoveCardPage.php' method='POST'>
+        <form class='DeleteCardForm' action=RemoveCardPage.php' method='POST'>
             <input type='hidden' name='card_id' value='2'>
-            <input type='submit' name='delete' value='Delete' onclick='return confirmDelete()'>
+            <input type='submit' name='' value='' onclick='return confirm()'>
         </form>
     ";
 
-        $actualOutput = DisplayShortCardData($allCards);
+        $actualOutput = DisplayShortCardData($allCards, 'RemoveCardPage.php');
         $expectedOutput = str_replace(["\n", "\r", ' '], '', $expectedOutput);
         $actualOutput = str_replace(["\n", "\r", ' '], '', $actualOutput);
         $this->assertEquals($expectedOutput, $actualOutput);
@@ -45,6 +45,6 @@ class DisplayShortCardDataTest extends TestCase
 
         $expectedOutput = 'No cards to display';
 
-        $this->assertSame($expectedOutput, DisplayShortCardData($allCards));
+        $this->assertSame($expectedOutput, DisplayShortCardData($allCards, 'RemoveCardPage.php'));
     }
 }

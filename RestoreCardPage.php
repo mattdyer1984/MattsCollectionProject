@@ -60,13 +60,15 @@
 
         <?php
         echo DisplayShortCardData($allCards, "RestoreCardPage.php?id=Restore&message=Card+Successfully+Restored");
-       
+
         ?>
     </ul>
-    <?php
-    
-    if (isset($_GET['message'])) {
+    <div style='margin-left:25px;'>
+        <?php
+        if (isset($_GET['message'])) {
             echo $_GET['message'];
         }
         ?>
+    </div>
+
 </body>
