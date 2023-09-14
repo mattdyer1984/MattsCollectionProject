@@ -28,7 +28,8 @@
     $db = DatabaseConnection();
     $playerCards = new PlayerCardModel($db);
     $card = $playerCards->getPlayerCardById($_GET['id']);
-    echo display($card);
+    echo displayEditableCard($card);
+    
 
 
 

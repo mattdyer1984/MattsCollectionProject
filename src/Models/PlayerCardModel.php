@@ -146,4 +146,20 @@ class PlayerCardModel
             ':id' => $id
         ]);
     }
+
+public function getPositionData()
+{
+    $query = $this->db->prepare(
+        "SELECT `Positions`.`id`,
+        `Positions`.`PositionName`
+        FROM `Positions`"
+    );
+
+    $query->execute();
+
+    $dbPositions = $query->fetchAll();
+
+    return $dbPositions;
 }
+}
+
