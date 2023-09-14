@@ -63,3 +63,36 @@
   margin-left:25px;
   gap:2rem;
 }
+
+.compareContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.leftPlayer{
+  border: 2px solid rgb(51, 6, 93);
+  padding: 30px;
+  height: 450px;
+  width:300px;
+  font-size: 26px;
+  margin-top: 10%;
+  margin-right: 10px;
+  list-style-type: none;
+  text-align: right;
+}
+
+.rightPlayer{
+  border: 2px solid rgb(51, 6, 93);
+  height: 450px;
+  width:300px;
+  font-size: 26px;
+  padding: 30px;
+  margin-top: 10%;
+  margin-left: 10px;
+  list-style-type: none;
+}
+
+.compareContainer li{
+  border-bottom: 1px solid rgb(51, 6, 93);
+  padding: 5px;
+}

@@ -5,10 +5,10 @@ require_once 'src/DatabaseConnection.php';
 
 function PositionData(PlayerCard $card, PlayerCardModel $positionsData)
 {
-    $positions = $positionsData->getPositionData();
+    $card = $positionsData->getPositionData();
 
     $options = '';
-    foreach ($positions as $position) {
+    foreach ($card as $position) {
         $selected = ($card->PositionName == $position['PositionName']) ? 'selected' : '';
         $options .= "<option value='{$position['id']}' $selected>{$position['PositionName']}</option>";
     }
