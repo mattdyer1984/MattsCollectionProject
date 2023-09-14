@@ -11,13 +11,13 @@ require_once 'src/DatabaseConnection.php'
 </script>
 <?php
 
-function RestoreCard(int $id, $db)
+function RestoreCard(int $id, $playerCards)
 {
-    $playerCards = new PlayerCardModel($db);
     $playerCards->changeActivationStatus($id);
 }
 if (isset($_POST['Restore'])) {
     $cardId = $_POST['card_id'];
     $db = DatabaseConnection();
-    RestoreCard($cardId, $db);
+    $playerCards = new PlayerCardModel($db);
+    RestoreCard($cardId, $playerCards);
 }

@@ -68,9 +68,14 @@ class PlayerCardModel
         FROM `PremierLeagueCards` 
         INNER JOIN `Positions` 
         ON `PremierLeagueCards`.`Position` = `Positions`.`id`
-        WHERE `PremierLeagueCards`.`Deleted` = $DeleteStatus" .
-                ($PositionId ? " AND `Positions`.`id` = $PositionId" : "")
+        WHERE `PremierLeagueCards`.`Deleted` = :DeleteStatus" .
+                ($PositionId ? " AND `Positions`.`id` = :PositionID" : "")
         );
+
+        $PositionId ?
+        $query->bindParam('DeleteStatus', $DeleteStatus).
+        $query->bindParam('PositionID', $PositionId) : 
+        $query->bindParam('DeleteStatus', $DeleteStatus);
 
         $query->execute();
 
@@ -147,7 +152,7 @@ class PlayerCardModel
         ]);
     }
 
-    public function getPositionData()
+    public function getPositionData(): array
     {
         $query = $this->db->prepare(
             "SELECT `Positions`.`id`,

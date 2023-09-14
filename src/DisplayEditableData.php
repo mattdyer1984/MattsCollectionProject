@@ -2,9 +2,9 @@
 
 require_once 'src/PositionDropBoxData.php';
 
-function displayEditableCard(PlayerCard $card)
+function displayEditableCard(PlayerCard $card, PlayerCardModel $positionsData)
 {
-    $postionOptions = PositionData($card);
+    $postionOptions = PositionData($card, $positionsData);
 
     return
         "<form class='editForm' action='EditDataFunction.php?id={$card->id}' method='POST'>

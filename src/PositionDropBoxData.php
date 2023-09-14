@@ -3,10 +3,8 @@
 require_once 'src/Models/PlayerCardModel.php';
 require_once 'src/DatabaseConnection.php';
 
-function PositionData(PlayerCard $card)
+function PositionData(PlayerCard $card, PlayerCardModel $positionsData)
 {
-    $db = DatabaseConnection();
-    $positionsData = new PlayerCardModel($db);
     $positions = $positionsData->getPositionData();
 
     $options = '';

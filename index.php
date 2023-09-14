@@ -75,6 +75,12 @@
         };
         ?>
     </ul>
+    <?php
+    $positionsData = new PlayerCardModel($db);
+    $positions = $positionsData->getPositionData();
+    echo 'pre';
+    var_dump($positions)
+    ?>
 </body>
 
 </html>
