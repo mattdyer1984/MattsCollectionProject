@@ -113,7 +113,7 @@ class PlayerCardModel
         ]);
     }
 
-    public function changeActivationStatus(int $id, int $Deleted=0): bool
+    public function changeActivationStatus(int $id, int $Deleted = 0): bool
     {
         $query = $this->db->prepare("UPDATE `PremierLeagueCards`
         SET `Deleted` = :Deleted
@@ -147,19 +147,18 @@ class PlayerCardModel
         ]);
     }
 
-public function getPositionData()
-{
-    $query = $this->db->prepare(
-        "SELECT `Positions`.`id`,
+    public function getPositionData()
+    {
+        $query = $this->db->prepare(
+            "SELECT `Positions`.`id`,
         `Positions`.`PositionName`
         FROM `Positions`"
-    );
+        );
 
-    $query->execute();
+        $query->execute();
 
-    $dbPositions = $query->fetchAll();
+        $dbPositions = $query->fetchAll();
 
-    return $dbPositions;
+        return $dbPositions;
+    }
 }
-}
-

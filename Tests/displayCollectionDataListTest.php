@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class DisplayCollectionDataListTest extends TestCase
 {
-    public function test_DisplayCollectionDataList()
+    public function test_displayCollectionDataList()
     {
         $allCards = [
             new PlayerCard(1, 'Player 1', 'Club1', 'Defender', 90, 95, 90, 275, 0),

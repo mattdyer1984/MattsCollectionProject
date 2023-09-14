@@ -1,6 +1,6 @@
 <?php
 
-function DisplayShortCardData(array $allCards,string $url)
+function DisplayShortCardData(array $allCards, string $url)
 {
     $output = '';
     if (empty($allCards)) {

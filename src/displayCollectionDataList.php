@@ -4,7 +4,7 @@ function displayCollectionDataList(array $allCards)
 {
   $output = '';
 
-  if($allCards == []){
+  if ($allCards == []) {
     echo "<div></div>
           <p>No Matching Cards</p>";
   }

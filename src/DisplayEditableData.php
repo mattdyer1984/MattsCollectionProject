@@ -28,4 +28,3 @@ function displayEditableCard(PlayerCard $card)
         <input style='margin-top:10px; width: 120px; padding:15px; justify-self:end;' type='submit' name='submit'/>
         ";
 }
-

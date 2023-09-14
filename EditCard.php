@@ -29,9 +29,6 @@
     $playerCards = new PlayerCardModel($db);
     $card = $playerCards->getPlayerCardById($_GET['id']);
     echo displayEditableCard($card);
-    
-
-
 
     ?>
 

@@ -60,14 +60,14 @@
 
         <?php
         echo DisplayShortCardData($allCards, 'RemoveCardPage.php?id=Delete&message=Card+Succesffuly+Deleted');
-    
+
         ?>
     </ul>
     <div style='margin-left:25px;'>
-    <?php
-    if (isset($_GET['message'])) {
+        <?php
+        if (isset($_GET['message'])) {
             echo $_GET['message'];
         }
         ?>
-        </div>
+    </div>
 </body>

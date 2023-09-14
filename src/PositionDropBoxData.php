@@ -13,6 +13,6 @@ function PositionData(PlayerCard $card)
     foreach ($positions as $position) {
         $selected = ($card->PositionName == $position['PositionName']) ? 'selected' : '';
         $options .= "<option value='{$position['id']}' $selected>{$position['PositionName']}</option>";
-        
-    } return $options;
+    }
+    return $options;
 }

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class DisplayShortCardDataTest extends TestCase
 {
-    public function test_DisplayShortCardData()
+    public function test_displayShortCardData()
     {
         $allCards = [
             new PlayerCard(1, 'Player 1', 'Club1', 'Defender', 90, 95, 90, 275, 0),

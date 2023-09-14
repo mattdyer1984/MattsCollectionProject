@@ -6,13 +6,13 @@ require_once 'src/Entities/PlayerCard.php';
 
 use PHPUnit\Framework\TestCase;
 
-class PositionDropBoxDataTest extends TestCase
+class PositionDataTest extends TestCase
 {
-    public function test_PositionData()
+    public function test_positionData()
     {
         $card = new PlayerCard(1, 'Player 1', 'Club1', 'Defender', 90, 95, 90, 275, 0);
-              
-            $expectedOutput ="
+
+            $expectedOutput = "
             <option value='1'>Goalkeeper</option>
             <option value='2' selected>Defender</option>
             <option value='3'>Midfielder</option>
