@@ -24,11 +24,15 @@
     require_once 'src/Models/PlayerCardModel.php';
     require_once 'src/displayCollectionDataList.php';
     require_once 'src/DatabaseConnection.php';
-
+    require_once 'FilterbyPosition.php';
 
     $db = DatabaseConnection();
     $playerCards = new PlayerCardModel($db);
-    $allCards = $playerCards->getAllCards(0);
+    $id = '';
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    }
+    $allCards = $playerCards->getAllCards(0, $id);
 
 
     ?>
@@ -71,6 +75,7 @@
         };
         ?>
     </ul>
+ 
 </body>
 
 </html>

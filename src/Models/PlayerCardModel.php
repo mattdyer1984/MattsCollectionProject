@@ -53,23 +53,29 @@ class PlayerCardModel
         return $Player;
     }
 
-    public function getAllCards($DeleteStatus): array
+    public function getAllCards(int $DeleteStatus, string $PositionId = ''): array
     {
         $query = $this->db->prepare(
             "SELECT `PremierLeagueCards`.`id`, 
-            `PremierLeagueCards`.`PlayerName`, 
-            `PremierLeagueCards`.`Club`, 
-            `Positions`.`PositionName`, 
-            `PremierLeagueCards`.`Defence`, 
-            `PremierLeagueCards`.`Control`, 
-            `PremierLeagueCards`.`Attack`, 
-            `PremierLeagueCards`.`Total`,
-            `PremierLeagueCards`.`Deleted` 
-            FROM `PremierLeagueCards` 
-            INNER JOIN `Positions` 
-            ON `PremierLeagueCards`.`Position` = `Positions`.`id`
-            WHERE `PremierLeagueCards`.`Deleted` = $DeleteStatus;"
+        `PremierLeagueCards`.`PlayerName`, 
+        `PremierLeagueCards`.`Club`, 
+        `Positions`.`PositionName`, 
+        `PremierLeagueCards`.`Defence`, 
+        `PremierLeagueCards`.`Control`, 
+        `PremierLeagueCards`.`Attack`, 
+        `PremierLeagueCards`.`Total`,
+        `PremierLeagueCards`.`Deleted` 
+        FROM `PremierLeagueCards` 
+        INNER JOIN `Positions` 
+        ON `PremierLeagueCards`.`Position` = `Positions`.`id`
+        WHERE `PremierLeagueCards`.`Deleted` = :DeleteStatus" .
+                ($PositionId ? " AND `Positions`.`id` = :PositionID" : "")
         );
+
+        $PositionId ?
+        $query->bindParam('DeleteStatus', $DeleteStatus).
+        $query->bindParam('PositionID', $PositionId) : 
+        $query->bindParam('DeleteStatus', $DeleteStatus);
 
         $query->execute();
 
@@ -112,7 +118,7 @@ class PlayerCardModel
         ]);
     }
 
-    public function changeActivationStatus(int $id, int $Deleted): bool
+    public function changeActivationStatus(int $id, int $Deleted = 0): bool
     {
         $query = $this->db->prepare("UPDATE `PremierLeagueCards`
         SET `Deleted` = :Deleted
@@ -144,5 +150,20 @@ class PlayerCardModel
             ':Defence' => $newPlayer->Defence,
             ':id' => $id
         ]);
+    }
+
+    public function getPositionData(): array
+    {
+        $query = $this->db->prepare(
+            "SELECT `Positions`.`id`,
+        `Positions`.`PositionName`
+        FROM `Positions`"
+        );
+
+        $query->execute();
+
+        $dbPositions = $query->fetchAll();
+
+        return $dbPositions;
     }
 }

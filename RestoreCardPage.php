@@ -21,7 +21,7 @@
     <?php
 
     require_once 'src/Navbar.php';
-    require_once 'src/DeleteCard.php';
+    require_once 'src/RestoreDelete.php';
     require_once 'src/Entities/PlayerCard.php';
     require_once 'src/Models/PlayerCardModel.php';
     require_once 'src/DatabaseConnection.php';
@@ -30,7 +30,7 @@
 
     $db = DatabaseConnection();
     $playerCards = new PlayerCardModel($db);
-    $allCards = $playerCards->getAllCards(0);
+    $allCards = $playerCards->getAllCards(1);
 
 
     ?>
@@ -39,7 +39,7 @@
 <body>
     <ul style='display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  list-style-type: none; margin-left:20px;'>
+  list-style-type: none;'>
         <strong>
             <li>Player ID</li>
         </strong>
@@ -53,13 +53,13 @@
             <li>Players Position</li>
         </strong>
         <strong>
-            <li>Delete Card</li>
+            <li>Restore Card</li>
         </strong>
 
 
 
         <?php
-        echo DisplayShortCardData($allCards, 'RemoveCardPage.php?id=Delete&message=Card+Succesffuly+Deleted');
+        echo DisplayShortCardData($allCards, "RestoreCardPage.php?id=Restore&message=Card+Successfully+Restored");
 
         ?>
     </ul>
@@ -70,4 +70,5 @@
         }
         ?>
     </div>
+
 </body>
