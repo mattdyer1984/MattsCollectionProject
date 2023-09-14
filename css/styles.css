@@ -58,6 +58,8 @@
   margin-left:40px;
 }
 
-
-
-
+.filterSearch{
+  display:flex;
+  margin-left:25px;
+  gap:2rem;
+}
