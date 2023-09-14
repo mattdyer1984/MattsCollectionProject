@@ -24,8 +24,7 @@
     require_once 'src/Models/PlayerCardModel.php';
     require_once 'src/displayCollectionDataList.php';
     require_once 'src/DatabaseConnection.php';
-    require_once 'FilterbyPosition.php';
-    /* require_once 'src/SearchBar.php'; */
+    require_once 'FilterSearch.php';
 
     $db = DatabaseConnection();
     $playerCards = new PlayerCardModel($db);
@@ -38,7 +37,7 @@
         $search = $_GET['Search'];
     }
 
-    $allCards = $playerCards->SearchTool( 0, $search, $id);
+    $allCards = $playerCards->SearchTool(0, $search, $id);
 
 
     ?>
@@ -81,7 +80,7 @@
         };
         ?>
     </ul>
- 
+
 </body>
 
 </html>
