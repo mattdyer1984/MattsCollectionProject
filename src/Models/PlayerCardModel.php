@@ -73,9 +73,9 @@ class PlayerCardModel
         );
 
         $PositionId ?
-        $query->bindParam('DeleteStatus', $DeleteStatus).
-        $query->bindParam('PositionID', $PositionId) : 
-        $query->bindParam('DeleteStatus', $DeleteStatus);
+            $query->bindParam('DeleteStatus', $DeleteStatus) .
+            $query->bindParam('PositionID', $PositionId) :
+            $query->bindParam('DeleteStatus', $DeleteStatus);
 
         $query->execute();
 
@@ -165,5 +165,60 @@ class PlayerCardModel
         $dbPositions = $query->fetchAll();
 
         return $dbPositions;
+    }
+
+    public function SearchTool(int $DeleteStatus, string $search = '', string $PositionId = ''): array
+    {
+        $query = $this->db->prepare(
+            "SELECT `PremierLeagueCards`.`id`, 
+        `PremierLeagueCards`.`PlayerName`, 
+        `PremierLeagueCards`.`Club`, 
+        `Positions`.`PositionName`, 
+        `PremierLeagueCards`.`Defence`, 
+        `PremierLeagueCards`.`Control`, 
+        `PremierLeagueCards`.`Attack`, 
+        `PremierLeagueCards`.`Total`,
+        `PremierLeagueCards`.`Deleted` 
+        FROM `PremierLeagueCards` 
+        INNER JOIN `Positions` 
+        ON `PremierLeagueCards`.`Position` = `Positions`.`id`
+        WHERE `PremierLeagueCards`.`Deleted` = :DeleteStatus" .
+                ($PositionId ? " AND `Positions`.`id` = :positionId" : "") .
+                ($search ? " AND (`PremierLeagueCards`.`PlayerName` LIKE :search OR `PremierLeagueCards`.`Club` LIKE :search)" : "")
+        );
+
+        $query->bindParam('DeleteStatus', $DeleteStatus);
+
+        if ($PositionId) {
+            $query->bindParam(':positionId', $PositionId);
+        }
+
+        if ($search) {
+            $searchStr = "%$search%";
+            $query->bindParam('search', $searchStr);
+        }
+
+
+        $query->execute();
+
+        $dbPlayers = $query->fetchAll();
+
+        $Players = [];
+
+        foreach ($dbPlayers as $dbPlayer) {
+            $Players[] = new PlayerCard(
+                $dbPlayer['id'],
+                $dbPlayer['PlayerName'],
+                $dbPlayer['Club'],
+                $dbPlayer['PositionName'],
+                $dbPlayer['Defence'],
+                $dbPlayer['Control'],
+                $dbPlayer['Attack'],
+                $dbPlayer['Total'],
+                $dbPlayer['Deleted']
+            );
+        }
+
+        return $Players;
     }
 }
