@@ -17,22 +17,22 @@ class DisplayCollectionDataListTest extends TestCase
 
 
         $expectedOutput =
-            "<li>1</li>
-        <li><ahref='EditCard.php?id=1'>Player1</a></li>
-        <li>Club1</li>
-        <li>Defender</li>
-        <li>90</li>
-        <li>95</li>
-        <li>90</li>
-        <li>275</li>
-        <li>2</li>
-        <li><ahref='EditCard.php?id=2'>Player2</a></li>
-        <li>Club2</li>
-        <li>Midfield</li>
-        <li>85</li>
-        <li>88</li>
-        <li>43</li>
-        <li>216</li>";
+            "<li>1<hr></li>
+        <li><ahref='EditCard.php?id=1'>Player1</a><hr></li>
+        <li>Club1<hr></li>
+        <li>Defender<hr></li>
+        <li>90<hr></li>
+        <li>95<hr></li>
+        <li>90<hr></li>
+        <li>275<hr></li>
+        <li>2<hr></li>
+        <li><ahref='EditCard.php?id=2'>Player2</a><hr></li>
+        <li>Club2<hr></li>
+        <li>Midfield<hr></li>
+        <li>85<hr></li>
+        <li>88<hr></li>
+        <li>43<hr></li>
+        <li>216<hr></li>";
 
 
         $actualOutput = displayCollectionDataList($allCards);

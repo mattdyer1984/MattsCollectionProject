@@ -37,6 +37,13 @@
 </head>
 
 <body>
+<div class='messages'>
+        <?php
+        if (isset($_GET['message'])) {
+            echo $_GET['message'];
+        }
+        ?>
+    </div>
 <div class='displayList'>
     <ul style='display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -63,11 +70,5 @@
 
         ?>
     </ul>
-    <div class='messages'>
-        <?php
-        if (isset($_GET['message'])) {
-            echo $_GET['message'];
-        }
-        ?>
-    </div>
+    
 </body>

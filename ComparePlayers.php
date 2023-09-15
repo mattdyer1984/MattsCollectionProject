@@ -34,10 +34,10 @@ $playerCards = new PlayerCardModel($db);
 <div class='dropdownContainer'>
 
     <form method='GET' action='DisplayCompare.php'> 
-        <select name="player1"> 
+        <select name="player1" required> 
             <?php echo PlayerDropDownData($playerCards); ?>
         </select>
-        <select name="player2"> 
+        <select name="player2" required> 
             <?php echo PlayerDropDownData($playerCards); ?>
         </select>
         <input type="submit" value="Search" />

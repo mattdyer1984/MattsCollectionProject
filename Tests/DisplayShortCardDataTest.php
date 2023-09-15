@@ -15,18 +15,18 @@ class DisplayShortCardDataTest extends TestCase
             new PlayerCard(2, 'Player 2', 'Club2', 'Midfield', 85, 88, 43, 216, 0),
         ];
         $expectedOutput = "
-        <li>1</li>
-        <li>Player 1</li>
-        <li>Club1</li>
-        <li>Defender</li>
+        <li>1<hr></li>
+        <li>Player 1<hr></li>
+        <li>Club1<hr></li>
+        <li>Defender<hr></li>
         <form class='DeleteCardForm' action=RemoveCardPage.php method='POST'>
             <input type='hidden' name='card_id' value='1'>
             <input type='submit' name='' value='' onclick='return confirm()'>
         </form>
-        <li>2</li>
-        <li>Player 2</li>
-        <li>Club2</li>
-        <li>Midfield</li>
+        <li>2<hr></li>
+        <li>Player 2<hr></li>
+        <li>Club2<hr></li>
+        <li>Midfield<hr></li>
         <form class='DeleteCardForm' action=RemoveCardPage.php method='POST'>
             <input type='hidden' name='card_id' value='2'>
             <input type='submit' name='' value='' onclick='return confirm()'>

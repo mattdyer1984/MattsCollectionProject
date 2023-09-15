@@ -167,10 +167,19 @@ class PlayerCardModel
         return $dbPositions;
     }
 
-    public function SearchTool(int $DeleteStatus, string $search = '', string $PositionId = ''): array
+    public function SearchTool(int $DeleteStatus, string $order = '', string $search = '', string $PositionId = ''): array
     {
-        $query = $this->db->prepare(
-            "SELECT `PremierLeagueCards`.`id`, 
+        $allowedColumns = ['PlayerName', 'Club', 'Defence', 'Control', 'Attack', 'Total', 'Deleted'];
+        
+
+        if ($order && in_array($order, $allowedColumns)) {
+            $orderByClause = " ORDER BY `PremierLeagueCards`.`$order` DESC";
+        } else {
+            $orderByClause = " ORDER BY `PremierLeagueCards`.`id` DESC";
+        }
+
+            $query = $this->db->prepare(
+                "SELECT `PremierLeagueCards`.`id`, 
         `PremierLeagueCards`.`PlayerName`, 
         `PremierLeagueCards`.`Club`, 
         `Positions`.`PositionName`, 
@@ -183,20 +192,22 @@ class PlayerCardModel
         INNER JOIN `Positions` 
         ON `PremierLeagueCards`.`Position` = `Positions`.`id`
         WHERE `PremierLeagueCards`.`Deleted` = :DeleteStatus" .
-                ($PositionId ? " AND `Positions`.`id` = :positionId" : "") .
-                ($search ? " AND (`PremierLeagueCards`.`PlayerName` LIKE :search OR `PremierLeagueCards`.`Club` LIKE :search)" : "")
-        );
+                    ($PositionId ? " AND `Positions`.`id` = :positionId" : "") .
+                    ($search ? " AND (`PremierLeagueCards`.`PlayerName` LIKE :search OR `PremierLeagueCards`.`Club` LIKE :search)" : "") .
+                    $orderByClause
+            );
 
-        $query->bindParam('DeleteStatus', $DeleteStatus);
+            $query->bindParam('DeleteStatus', $DeleteStatus);
 
-        if ($PositionId) {
-            $query->bindParam(':positionId', $PositionId);
-        }
+            if ($PositionId) {
+                $query->bindParam(':positionId', $PositionId);
+            }
 
-        if ($search) {
-            $searchStr = "%$search%";
-            $query->bindParam('search', $searchStr);
-        }
+            if ($search) {
+                $searchStr = "%$search%";
+                $query->bindParam(':search', $searchStr);
+            }
+        
 
 
         $query->execute();
