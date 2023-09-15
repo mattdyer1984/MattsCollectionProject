@@ -5,17 +5,25 @@
 }
 
 .navbar{
-  height: 80px;
-  display: flex;
+  padding:15px;
   background-color: rgb(51, 6, 93);
   color: white;
-  align-items: center;
-  justify-content:space-between;
   margin-bottom: 35px;
+}
+
+.titleLogo{
+  display: flex;
+  justify-content: center;
 }
 
 .logoImage{
   padding-left: 30px;
+}
+
+.navlinks {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px
 }
 
 .title{
@@ -27,6 +35,7 @@
 .navlinks a{
   color: white;
   padding: 0 10px;
+  font-size: 18px;
 }
 
 .playersTable{
@@ -41,21 +50,45 @@
 }
 
 .addCardForm {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 500px;
-  margin: 100px 200px;
-  gap: 1rem
-}
-
-.editForm {
   display:grid; 
+  justify-content: center;
   text-align: center; 
   font-size:20px; 
   font-weight:bolder; 
   grid-template-columns: 1fr 2fr; 
   width: 700px; 
-  margin-left:40px;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top:100px;
+
+}
+
+.addCardForm input{
+  height: 60px;
+}
+
+.addCardForm select {
+  height: 60px;
+  text-align: center;
+}
+
+.editImg{
+  width: 200px;
+  margin: auto;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.editForm {
+  display:grid; 
+  justify-content: center;
+  text-align: center; 
+  font-size:20px; 
+  font-weight:bolder; 
+  grid-template-columns: 1fr 2fr; 
+  width: 700px; 
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .filterSearch{
@@ -71,28 +104,85 @@
 
 .leftPlayer{
   border: 2px solid rgb(51, 6, 93);
-  padding: 30px;
-  height: 450px;
-  width:300px;
-  font-size: 26px;
+  padding: 40px;
+  width: 35%;
+  font-size: 28px;
   margin-top: 10%;
-  margin-right: 10px;
   list-style-type: none;
   text-align: right;
 }
 
 .rightPlayer{
   border: 2px solid rgb(51, 6, 93);
-  height: 450px;
-  width:300px;
-  font-size: 26px;
-  padding: 30px;
+  font-size: 28px;
+  width: 35%;
+  padding: 40px;
   margin-top: 10%;
-  margin-left: 10px;
   list-style-type: none;
 }
 
 .compareContainer li{
   border-bottom: 1px solid rgb(51, 6, 93);
   padding: 5px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.cardImg {
+  width: 130px;
+  margin: auto;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.dropdownContainer {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messages {
+font-size: 28px;
+text-align: center;
+font-weight: 700;
+margin-top: 70px;
+}
+
+.displayList li{
+  padding-bottom: 6px;
+  padding-top:8px
+}
+
+@media screen and (max-width: 1400px) {
+
+  .leftPlayer{
+    width: 40%;
+  }
+  .rightPlayer{
+    width: 40%;
+  }
+  
+  }
+
+@media screen and (max-width: 1200px) {
+
+  .leftPlayer{
+    width: 45%;
+  }
+  .rightPlayer{
+    width: 45%;
+  }
+  
+  }
+
+  @media screen and (max-width: 1400px) {
+
+    .leftPlayer{
+      width: 40%;
+    }
+    .rightPlayer{
+      width: 40%;
+    }
+    
+    }

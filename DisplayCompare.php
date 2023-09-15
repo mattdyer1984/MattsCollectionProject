@@ -19,37 +19,43 @@
 
     <script defer src="js/index.js"></script>
     <?php
-require_once 'src/Navbar.php';
-require_once 'src/Models/PlayerCardModel.php';
-require_once 'src/DatabaseConnection.php';
-$db = DatabaseConnection();
-$playerCards = new PlayerCardModel($db);
+    require_once 'src/Navbar.php';
+    require_once 'src/Models/PlayerCardModel.php';
+    require_once 'src/DatabaseConnection.php';
+    require_once 'ComparePlayers.php';
 
-if (isset($_GET['player1']) && isset($_GET['player2'])) {
-    $player1Id = $_GET['player1'];
-    $player2Id = $_GET['player2'];
-}
+    $db = DatabaseConnection();
+    $playerCards = new PlayerCardModel($db);
 
- $player1 = $playerCards->getPlayerCardById($_GET['player1']);
- $player2 = $playerCards->getPlayerCardById($_GET['player2']);
 
-?>
-<div class='compareContainer'>
-    <ul class=leftPlayer>
-<?php
-foreach($player1 as $item) {
-    echo "<li>$item</li>";
+    if (isset($_GET['player1']) && isset($_GET['player2'])) {
+        $player1Id = $_GET['player1'];
+        $player2Id = $_GET['player2'];
+    }
 
-}
-?>
-    </ul>
-    <ul class=rightPlayer>
-<?php
+    $player1 = $playerCards->getPlayerCardById($_GET['player1']);
+    $player2 = $playerCards->getPlayerCardById($_GET['player2']);
 
- foreach($player2 as $item) {
-    echo "<li>$item</li>";
- }
-
-?>
-</ul>
- </div>
+    ?>
+    <div class='compareContainer'>
+        <ul class=rightPlayer>
+            <img class='cardImg' src='images/<?php echo $player1->id ?>.png' />
+            <li><strong>Name: </strong><?php echo $player1->PlayerName ?></li>
+            <li><strong>Club: </strong><?php echo $player1->Club ?></li>
+            <li><strong>Position: </strong><?php echo $player1->PositionName ?></li>
+            <li><strong>Defence: </strong><?php echo $player1->Defence ?></li>
+            <li><strong>Control:</strong><?php echo $player1->Control ?></li>
+            <li><strong>Attack: </strong><?php echo $player1->Attack ?></li>
+            <li><strong>Total: </strong><?php echo $player1->Total ?></li>
+        </ul>
+        <ul class=rightPlayer>
+            <img class='cardImg' src='images/<?php echo $player2->id ?>.png' />
+            <li><strong>Name: </strong><?php echo $player2->PlayerName ?></li>
+            <li><strong>Club: </strong><?php echo $player2->Club ?></li>
+            <li><strong>Position: </strong><?php echo $player2->PositionName ?></li>
+            <li><strong>Defence: </strong><?php echo $player2->Defence ?></li>
+            <li><strong>Control:</strong><?php echo $player2->Control ?></li>
+            <li><strong>Attack: </strong><?php echo $player2->Attack ?></li>
+            <li><strong>Total: </strong><?php echo $player2->Total ?></li>
+        </ul>
+    </div>

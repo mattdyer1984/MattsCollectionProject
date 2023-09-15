@@ -44,6 +44,7 @@
 </head>
 
 <body>
+<div class="displayList">
     <p style='text-align:center; font-size:22px; font-weight:600;'> Click on the players name to edit their details</p>
     <ul class='playersTable'>
         <strong>
@@ -70,17 +71,20 @@
         <strong>
             <li>Players Total Score</li>
         </strong>
-
         <?php
         echo displayCollectionDataList($allCards);
+        ?>
+    </ul>
+</div>
+    <div class='messages'>
+    <?php
         if (isset($_GET['error'])) {
             echo $_GET['error'];
         } elseif (isset($_GET['message'])) {
             echo $_GET['message'];
         };
         ?>
-    </ul>
-
+    </div>
 </body>
 
 </html>

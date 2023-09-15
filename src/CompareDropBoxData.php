@@ -2,6 +2,9 @@
 
 require_once 'src/Models/PlayerCardModel.php';
 require_once 'src/DatabaseConnection.php';
+require_once 'src/CompareDropBoxData.php';
+
+
 
 function PlayerDropDownData(PlayerCardModel $model)
 {

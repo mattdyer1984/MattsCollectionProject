@@ -33,7 +33,6 @@ $playerCards = new PlayerCardModel($db);
 
 <div class='dropdownContainer'>
 
-<div class='compareContainer'>
     <form method='GET' action='DisplayCompare.php'> 
         <select name="player1"> 
             <?php echo PlayerDropDownData($playerCards); ?>
@@ -44,10 +43,4 @@ $playerCards = new PlayerCardModel($db);
         <input type="submit" value="Search" />
     </form>
 </div>
-
-
-
-</div>
-
-
 

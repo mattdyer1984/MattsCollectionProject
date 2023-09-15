@@ -37,33 +37,33 @@
 </head>
 
 <body>
+    <div class='displayList'>
     <ul style='display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   list-style-type: none;'>
         <strong>
-            <li>Player ID</li>
+            <p>Player ID</p>
         </strong>
         <strong>
-            <li>Player Name</li>
+            <p>Player Name</p>
         </strong>
         <strong>
-            <li>Players Club</li>
+            <p>Players Club</p>
         </strong>
         <strong>
-            <li>Players Position</li>
+            <p>Players Position</p>
         </strong>
         <strong>
-            <li>Restore Card</li>
+            <p>Restore Card</p>
         </strong>
-
-
-
+        
         <?php
         echo DisplayShortCardData($allCards, "RestoreCardPage.php?id=Restore&message=Card+Successfully+Restored");
 
         ?>
     </ul>
-    <div style='margin-left:25px;'>
+</div>
+    <div class='messages'>
         <?php
         if (isset($_GET['message'])) {
             echo $_GET['message'];
