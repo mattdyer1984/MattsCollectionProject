@@ -33,7 +33,8 @@ class DisplayShortCardDataTest extends TestCase
         </form>
     ";
 
-        $actualOutput = DisplayShortCardData($allCards, 'RemoveCardPage.php');
+    $actualOutput = displayShortCardData($allCards, 'RemoveCardPage.php');
+    ;
         $expectedOutput = str_replace(["\n", "\r", ' '], '', $expectedOutput);
         $actualOutput = str_replace(["\n", "\r", ' '], '', $actualOutput);
         $this->assertEquals($expectedOutput, $actualOutput);
@@ -45,6 +46,6 @@ class DisplayShortCardDataTest extends TestCase
 
         $expectedOutput = 'No cards to display';
 
-        $this->assertSame($expectedOutput, DisplayShortCardData($allCards, 'RemoveCardPage.php'));
+        $this->assertSame($expectedOutput, displayShortCardData($allCards, 'RemoveCardPage.php'));
     }
 }
