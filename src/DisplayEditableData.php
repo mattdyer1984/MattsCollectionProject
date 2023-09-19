@@ -4,8 +4,8 @@ require_once 'src/PositionDropBoxData.php';
 
 function displayEditableCard(PlayerCard $card, PlayerCardModel $positionsData)
 {
-    $postionOptions = PositionData($card, $positionsData);
-
+    $postionOptions = PositionData($card, $positionsData);              //gets the position data for the drop down box to 
+                                                                        //populate with information from the database.
     return
         "<img src='images/{$card->id}.png' class=editImg />
         <div class='editContainer'>

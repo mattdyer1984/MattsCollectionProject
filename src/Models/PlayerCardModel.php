@@ -53,7 +53,7 @@ class PlayerCardModel
         return $Player;
     }
 
-    public function getAllCards(int $DeleteStatus, string $PositionId = ''): array
+    public function getAllCards(int $DeleteStatus, string $PositionId = ''): array  //if a PositionId isnt provided its an empty string
     {
         $query = $this->db->prepare(
             "SELECT `PremierLeagueCards`.`id`, 
@@ -69,11 +69,11 @@ class PlayerCardModel
         INNER JOIN `Positions` 
         ON `PremierLeagueCards`.`Position` = `Positions`.`id`
         WHERE `PremierLeagueCards`.`Deleted` = :DeleteStatus" .
-                ($PositionId ? " AND `Positions`.`id` = :PositionID" : "")
+                ($PositionId ? " AND `Positions`.`id` = :PositionID" : "")      //if a position id is provided adds 'And positions.id clause to query
         );
 
         $PositionId ?
-            $query->bindParam('DeleteStatus', $DeleteStatus) .
+            $query->bindParam('DeleteStatus', $DeleteStatus) .          /* if a position id is provided bind both else but bind delete status */
             $query->bindParam('PositionID', $PositionId) :
             $query->bindParam('DeleteStatus', $DeleteStatus);
 
@@ -118,7 +118,7 @@ class PlayerCardModel
         ]);
     }
 
-    public function changeActivationStatus(int $id, int $Deleted = 0): bool
+    public function changeActivationStatus(int $id, int $Deleted = 0): bool     //default value is 0 (not deleted)
     {
         $query = $this->db->prepare("UPDATE `PremierLeagueCards`
         SET `Deleted` = :Deleted
@@ -141,7 +141,7 @@ class PlayerCardModel
         `Attack` = :Attack
         WHERE `id` = :id");
 
-        return $query->execute([
+        return $query->execute([                        //because the playercard is readonly regular binding doesnt work so it must be secured via the execute
             ':PlayerName' => $newPlayer->PlayerName,
             ':Club' => $newPlayer->Club,
             ':PositionName' => $newPlayer->PositionName,
@@ -172,10 +172,10 @@ class PlayerCardModel
         $allowedColumns = ['PlayerName', 'Club', 'Defence', 'Control', 'Attack', 'Total', 'Deleted'];
 
 
-        if ($order && in_array($order, $allowedColumns)) {
-            $orderByClause = " ORDER BY `PremierLeagueCards`.`$order` DESC";
+        if ($order && in_array($order, $allowedColumns)) {          //because orderby isnt a param it cannot be binded, so to prevent sql injection we check
+            $orderByClause = " ORDER BY `PremierLeagueCards`.`$order` DESC";        //if the proveded $order exists in the all columns variable add this 
         } else {
-            $orderByClause = " ORDER BY `PremierLeagueCards`.`id`";
+            $orderByClause = " ORDER BY `PremierLeagueCards`.`id`";                 //else order by id which is the default anyway
         }
 
         $query = $this->db->prepare(

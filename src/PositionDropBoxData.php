@@ -9,8 +9,8 @@ function PositionData(PlayerCard $card, PlayerCardModel $positionsData)
 
     $options = '';
     foreach ($positions as $position) {
-        $selected = ($card->PositionName == $position['PositionName']) ? 'selected' : '';
-        $options .= "<option value='{$position['id']}' $selected>{$position['PositionName']}</option>";
+        $selected = ($card->PositionName == $position['PositionName']) ? 'selected' : '';          //this makes the position of the selected player the pre selected option from the drop down box
+        $options .= "<option value='{$position['id']}' $selected>{$position['PositionName']}</option>";         //and saves it to a variable to use in the drop down options
     }
     return $options;
 }
