@@ -7,7 +7,9 @@ function displayEditableCard(PlayerCard $card, PlayerCardModel $positionsData)
     $postionOptions = PositionData($card, $positionsData);
 
     return
-        "<form class='editForm' action='EditDataFunction.php?id={$card->id}' method='POST'>
+        "<img src='images/{$card->id}.png' class=editImg />
+        <div class='editContainer'>
+        <form class='editForm' action='EditDataFunction.php?id={$card->id}' method='POST'>
         <p>Player Details</p>
         <p>New Player Details</p>
         <p>{$card->PlayerName}</p>
@@ -26,5 +28,6 @@ function displayEditableCard(PlayerCard $card, PlayerCardModel $positionsData)
         <input type='number'min='0' value='{$card->Attack}' max='100' name='newAttack'/>
         <div></div>
         <input style='margin-top:10px; width: 120px; padding:15px; justify-self:end;' type='submit' name='submit'/>
+        </div>
         ";
 }

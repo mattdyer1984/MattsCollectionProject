@@ -37,50 +37,59 @@
         $search = $_GET['Search'];
     }
 
-    $allCards = $playerCards->SearchTool(0, $search, $id);
+    $order = '';
+    if (isset($_GET['Order'])) {
+        $order = $_GET['Order'];
+    }
+
+    $allCards = $playerCards->SearchTool(0, $order, $search, $id);
 
 
     ?>
 </head>
 
 <body>
+<div class="displayList">
     <p style='text-align:center; font-size:22px; font-weight:600;'> Click on the players name to edit their details</p>
     <ul class='playersTable'>
         <strong>
-            <li>Player ID</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=id">Player ID</a>
         </strong>
         <strong>
-            <li>Player Name</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=PlayerName">Player Name</a>
         </strong>
         <strong>
-            <li>Players Club</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=Club">Club</a>
         </strong>
         <strong>
-            <li>Players Position</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=Position">Player Position</a>
         </strong>
         <strong>
-            <li>Players Defence Score</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=Defence">Defence Score</a>
         </strong>
         <strong>
-            <li>Players Control Score</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=Control">Control Score</a>
         </strong>
         <strong>
-            <li>Players Attack Score</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=Attack">Attack Score</a>
         </strong>
         <strong>
-            <li>Players Total Score</li>
+        <a href="Index.php?Search=<?php echo $search;?>&id=<?php echo $id;?>&Order=Total">Total Score</a>
         </strong>
-
         <?php
         echo displayCollectionDataList($allCards);
+        ?>
+    </ul>
+</div>
+    <div class='messages'>
+    <?php
         if (isset($_GET['error'])) {
             echo $_GET['error'];
         } elseif (isset($_GET['message'])) {
             echo $_GET['message'];
         };
         ?>
-    </ul>
-
+    </div>
 </body>
 
 </html>

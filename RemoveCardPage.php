@@ -37,37 +37,38 @@
 </head>
 
 <body>
-    <ul style='display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  list-style-type: none; margin-left:20px;'>
-        <strong>
-            <li>Player ID</li>
-        </strong>
-        <strong>
-            <li>Player Name</li>
-        </strong>
-        <strong>
-            <li>Players Club</li>
-        </strong>
-        <strong>
-            <li>Players Position</li>
-        </strong>
-        <strong>
-            <li>Delete Card</li>
-        </strong>
-
-
-
-        <?php
-        echo DisplayShortCardData($allCards, 'RemoveCardPage.php?id=Delete&message=Card+Succesffuly+Deleted');
-
-        ?>
-    </ul>
-    <div style='margin-left:25px;'>
+<div class='messages'>
         <?php
         if (isset($_GET['message'])) {
             echo $_GET['message'];
         }
         ?>
     </div>
+<div class='displayList'>
+    <ul style='display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  list-style-type: none;'>
+        <strong>
+            <p>Player ID</p>
+        </strong>
+        <strong>
+            <p>Player Name</p>
+        </strong>
+        <strong>
+            <p>Players Club</p>
+        </strong>
+        <strong>
+            <p>Players Position</p>
+        </strong>
+        <strong>
+            <p>Restore Card</p>
+        </strong>
+        
+        <?php
+        
+        echo DisplayShortCardData($allCards, 'RemoveCardPage.php?id=Delete&message=Card+Successfully+Deleted');
+
+        ?>
+    </ul>
+    
 </body>

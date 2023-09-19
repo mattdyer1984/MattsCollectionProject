@@ -167,8 +167,17 @@ class PlayerCardModel
         return $dbPositions;
     }
 
-    public function SearchTool(int $DeleteStatus, string $search = '', string $PositionId = ''): array
+    public function SearchTool(int $DeleteStatus, string $order = '', string $search = '', string $PositionId = ''): array
     {
+        $allowedColumns = ['PlayerName', 'Club', 'Defence', 'Control', 'Attack', 'Total', 'Deleted'];
+
+
+        if ($order && in_array($order, $allowedColumns)) {
+            $orderByClause = " ORDER BY `PremierLeagueCards`.`$order` DESC";
+        } else {
+            $orderByClause = " ORDER BY `PremierLeagueCards`.`id`";
+        }
+
         $query = $this->db->prepare(
             "SELECT `PremierLeagueCards`.`id`, 
         `PremierLeagueCards`.`PlayerName`, 
@@ -184,7 +193,8 @@ class PlayerCardModel
         ON `PremierLeagueCards`.`Position` = `Positions`.`id`
         WHERE `PremierLeagueCards`.`Deleted` = :DeleteStatus" .
                 ($PositionId ? " AND `Positions`.`id` = :positionId" : "") .
-                ($search ? " AND (`PremierLeagueCards`.`PlayerName` LIKE :search OR `PremierLeagueCards`.`Club` LIKE :search)" : "")
+                ($search ? " AND (`PremierLeagueCards`.`PlayerName` LIKE :search OR `PremierLeagueCards`.`Club` LIKE :search)" : "") .
+                $orderByClause
         );
 
         $query->bindParam('DeleteStatus', $DeleteStatus);
@@ -195,8 +205,9 @@ class PlayerCardModel
 
         if ($search) {
             $searchStr = "%$search%";
-            $query->bindParam('search', $searchStr);
+            $query->bindParam(':search', $searchStr);
         }
+
 
 
         $query->execute();
